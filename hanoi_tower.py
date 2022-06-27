@@ -1,6 +1,8 @@
 #  采用维基百科的图围解法,但是循环方向与维基百科的版本做了一定的区分,采用递归的方式求解
 #  为了实现turtle的效果，打算使用函数的方法来绘制图像
 import turtle
+import time
+import playsound
 
 n = int(input("请输入盘片的数量："))
 A = [i for i in range(n, 0, -1)]  # A柱，其中数字越大表示的盘片越大
@@ -17,16 +19,18 @@ turtle.colormode(255)
 turtle.title('汉诺塔')
 turtle.bgpic('bg.gif')
 # 使用turtle.bgpic设置背景图像
+
 # 图像初始化
 for i in A:
     if i != "A":
         turtle.penup()
-        turtle.goto(50 - 300, wide * 0.5 + wide * (len(A) - 1 - i) - 200)
+        turtle.goto(50 - 300, wide * 0.5 + wide * (len(A) - 1 - i) - 200)  # 设置A柱初始画面
         c = color * i
         turtle.color(c, c, c)
         turtle.pd()
         turtle.forward(100)
         turtle.penup()
+playsound.playsound("进入游戏.mp3")  # 搞一个语音提示优化下体验,white进入游戏
 
 
 def hanoi(n, a, b, c, A, B, C):
@@ -52,7 +56,7 @@ def draw(a, c, n):
     global color
     global m
     turtle.penup()
-    turtle.goto(50 + 200 * (ord(a[0]) - ord('A')) - 300, wide * 0.5 + wide * (m - a[-1]) - 200)  # 这个-100很怪，照理说是200
+    turtle.goto(50 + 200 * (ord(a[0]) - ord('A')) - 300, wide * 0.5 + wide * (m - a[-1]) - 200)  # 设置画图的位置
     turtle.down()
     turtle.color("white")  # 先擦除被拿掉的盘子
     turtle.forward(100)
@@ -61,7 +65,8 @@ def draw(a, c, n):
     turtle.goto(50 + 200 * (ord(c[0]) - ord('A')) - 300, wide * 0.5 + wide * (m - a[-1]) - 200)  # 在C画新的盘子
     turtle.down()
     c = color * n
-    turtle.color(c, c, c)  # 先擦除被拿掉的盘子
+    turtle.color(c, c, c)  # 画上新的
+    playsound.playsound('click.wav')  # 提示音
     turtle.forward(100)
     turtle.penup()
 
