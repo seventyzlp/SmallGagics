@@ -8,5 +8,5 @@ for i in txt:
         j += chr(ord(i) - 32)
     else:
         j += i
-t.seek(0)
+t.seek(0)  # 网络上的方法大多就是新建新文件，替换掉旧文件来实现文字替换，这里是选择修改源文件
 t.write(j)
