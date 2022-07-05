@@ -13,7 +13,7 @@ for j in range(1, len(list) + 1):  # 总循环次数
         if list[i] < list[i - 1]:  # 如果指针位置比前一个数字小，那么就进行交换，把更小的数字放到前面
             t = list[i - 1]
             list[i - 1] = list[i]
-            list[i] = list[i - 1]
+            list[i] = t
             n[j] += 1
             print("经过第" + str(n[j]) + "次交换后，结果为" + str(list))
     if n[j - 1] == n[j - 2]: # 在一趟遍历中，如果完全没发生交换，那么就说明已经排序完毕，提前跳出
