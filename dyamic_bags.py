@@ -14,9 +14,9 @@ while i < 10:
 print(cargo)
 print(price)
 for i in range(10):
-    percent.append(price[i] / cargo[i])
+    percent.append(price[i] / cargo[i])  # 收益比率
 print(percent)
-for j in range(1, len(cargo) + 1):
+for j in range(1, len(cargo) + 1):  # 进行一个排序
     for i in range(-1, -len(cargo) - 1 + j, -1):
         if cargo[i] < cargo[i - 1]:
             t = cargo[i - 1]
@@ -31,30 +31,21 @@ for j in range(1, len(cargo) + 1):
 print("cargo:" + str(cargo))
 print("price" + str(price))
 print("percent" + str(percent))
-# while bag > 0:
-#     for i in range(0, len(cargo) - 1):
-#         if cargo[i] <= bag:
-#             bag -= cargo[i]  # 装入背包
-#             cargo.remove(cargo[i])
-#             price.remove(price[i])
-#             percent.remove(percent[i])
-#             print("take" + str(cargo[i]) + "price" + str(price[i]))
-#             i -= 1
-
 pickup = [[0] * 10] * 10  # 创建二维数组
 
 
 #  动态规划找最大值情况
-#  j为当前背包容量，i为第i个物品
+#  j为当前背包装下的东西，i为第i个物品
 def fmax():
     global pickup
     for i in range(0, 10):
         for j in range(0, bag):
             if j < cargo[i]:  # 装不下，那么总价值不变
-                pickup[i][j]=pickup[i-1][j]
+                pickup[i][j] = pickup[i - 1][j]
             else:  # 装得下，比较是不是应该装这个东西
                 pickup[i][j] = max(pickup[i - 1][j], pickup[i - 1][j - cargo[i]] + price[i])
 
+
 fmax()
 print("-------------------------------")
-print(pickup)
+print("价值最高的背包总价为:" + str(pickup[9][9]))  # 输出最终结果
