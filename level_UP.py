@@ -27,4 +27,5 @@ for x in word:
         data = data.replace(x, y)
 print("------------------")
 print(data)
-# t.write(data)
+t.seek(0)
+t.write(data)
