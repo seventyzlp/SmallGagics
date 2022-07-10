@@ -1,6 +1,7 @@
 import keyword
 
-t = open("test.py", "r+", encoding='utf-8')
+file = input("请输入想要修改的文件路径，若在同一个文件夹下，输入文件名:")
+t = open(file, "r+", encoding='utf-8')
 txt = t.read()
 print("原始文件内容是：")
 print(txt.rstrip())
