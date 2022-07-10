@@ -22,6 +22,8 @@ while j < len(txt):
 x = ''
 if 'import' in word:
     word.remove(word[word.index('import') + 1])
+elif 'def' in word:
+    word.remove(word[word.index('def') + 1])
 for x in word:
     if x not in keyword.kwlist:
         y = x.upper()
