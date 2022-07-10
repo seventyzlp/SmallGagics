@@ -14,15 +14,15 @@ while j < len(txt):
     if txt[j] == "\n" or txt[j].isspace():
         word.append(i)
         i = ''
-    elif txt[j + 1] == '.' or txt[j + 1] == '(':
+    elif txt[j + 1] == '.' or txt[j + 1] == '(':  # 限制函数名和库引用的名字不变
         i = ''
-    elif txt[j].islower():
+    elif txt[j].islower():  # 是大写字母也不用改了
         i += txt[j]
     j += 1
 x = ''
 if 'import' in word:
     word.remove(word[word.index('import') + 1])
-elif 'def' in word:
+elif 'def' in word:  # 自己定义的函数名字也不变
     word.remove(word[word.index('def') + 1])
 for x in word:
     if x not in keyword.kwlist:
