@@ -8,7 +8,6 @@ def check(x, y):
     flag = True
     x -= 1
     y -= 1
-
     for i in range(1, len(pos)):
         if pos[i] == y:
             flag = False
